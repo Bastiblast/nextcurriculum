@@ -31,10 +31,10 @@ export default function PersonnalsCard () {
     </CardHeader>
     <CardContent>
       <Label>Née le {intlBirthDate}</Label>
-      <Label><SVGMail/> million.bastien@gmail.com /</Label>
+      <Label><SVGMail/> million.bastien@gmail.com</Label>
       <Label><SVGPhone /> 06.33.89.42.37</Label>
     </CardContent>
-    <CardFooter>Have fun</CardFooter>
+    <CardFooter>Team leader depuis 2020</CardFooter>
   </Card>
   </>
 }
