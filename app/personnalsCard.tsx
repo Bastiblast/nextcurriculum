@@ -10,6 +10,7 @@ import CallingSvg from "@/lib/calling-phone-receive-phone-svgrepo-com"
 import MailSVG from "@/lib/mail-reception-svgrepo-com"
 import SVGPhone from "@/lib/calling-phone-receive-phone-svgrepo-com"
 import SVGMail from "@/lib/mail-reception-svgrepo-com"
+import { AvatarMy } from "@/components/avatar-my"
 export default function PersonnalsCard () {
 
   const {firstName,lastName,birthDay} = myInfo
@@ -23,18 +24,26 @@ export default function PersonnalsCard () {
 
   return <>
   <Card>
-    <CardHeader>
-      <CardTitle> {firstName + " " + lastName + " " + (ageDate.getFullYear() -1970) + " ans." }</CardTitle>
+    <CardHeader className="grid grid-cols-2">
+      <AvatarMy/>
+      <div>
+      <CardTitle className="w-30 mb-2"> {firstName + " " + lastName}</CardTitle>
+      <CardTitle className=" mb-2"> {(ageDate.getFullYear() -1970) + " ans" }</CardTitle>
       <CardDescription>
         Actuellement employé chez Amazon
       </CardDescription>
+      </div>
     </CardHeader>
     <CardContent>
       <Label>Née le {intlBirthDate}</Label>
       <Label><SVGMail/> million.bastien@gmail.com</Label>
       <Label><SVGPhone /> 06.33.89.42.37</Label>
     </CardContent>
-    <CardFooter>Team leader depuis 2020</CardFooter>
+    <CardFooter>
+      <CardDescription>
+        Team leader depuis 2020
+        </CardDescription>
+        </CardFooter>
   </Card>
   </>
 }
