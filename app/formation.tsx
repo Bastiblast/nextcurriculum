@@ -9,7 +9,7 @@ export default function Formation() {
             <Card>
           <CardHeader>
             <CardTitle>
-              Formation
+              <h2 className='text-2xl md:text-3xl'>Formation</h2>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -20,7 +20,7 @@ export default function Formation() {
                 main:"Lycée Polyvalent la Saulaie - Saint-Marcellin",
                 href:"https://lasaulaie.ent.auvergnerhonealpes.fr/",
                 avatar:"https://cdn.ent.auvergnerhonealpes.fr/images/favicon.ico",
-                footer:"Recommend by official MDN - from Jad Joubran"
+                footer:"Ici on fait du fromage - et c'est déjà pas mal"
                 }}/>
                   - Gestion et Communication en entreprise
             </Label>
