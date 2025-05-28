@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "pull": "git pull git:Bastiblast/nextcurriculum.git",
+    "push": "git push git:Bastiblast/nextcurriculum.git",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
