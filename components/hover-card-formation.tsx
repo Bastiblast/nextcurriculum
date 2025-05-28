@@ -13,7 +13,14 @@ import {
 } from "@/components/ui/hover-card"
 import Link from "next/link"
 
-export function HoverCardFormation(props) {
+interface props {options :{
+  title: string,
+  avatar: string,
+  main: string;
+  footer: string;
+  href: string
+}}
+export function HoverCardFormation(props:props) {
 
     console.log(props)
     const {title,avatar,main,footer,href} = props.options

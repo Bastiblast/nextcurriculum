@@ -20,7 +20,6 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children
 }: Readonly<{
-  experiences:React.ReactNode;
   children: React.ReactNode;
 }>) {
   return (
@@ -30,7 +29,7 @@ export default function RootLayout({
 
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative bg-white`}
       >
         {children}
         
