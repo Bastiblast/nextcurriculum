@@ -1,5 +1,4 @@
 import PersonnalsCard from "./personnalsCard";
-import { AvatarMy } from "@/components/avatar-my";
 import Formation from "./formation";
 import Experience from "./experience";
 import { Label } from "@/components/ui/label";
