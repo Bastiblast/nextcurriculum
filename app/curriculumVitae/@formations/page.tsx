@@ -1,10 +1,10 @@
 import React from 'react'
 import { Card } from "@/components/ui/card";
-import { CardContent, CardDescription, CardHeader, CardTitle } from "./personnalsCard";
+import { CardContent, CardDescription, CardHeader, CardTitle } from "../@personnalsCard/page";
 import { Label } from "@/components/ui/label";
 import { HoverCardFormation } from "@/components/hover-card-formation";
 
-export default function Formation() {
+export default function Page() {
   return (
             <Card>
           <CardHeader>

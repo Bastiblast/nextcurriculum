@@ -18,12 +18,11 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  experiences,children
+  children
 }: Readonly<{
   experiences:React.ReactNode;
   children: React.ReactNode;
 }>) {
-  console.log("experiences",experiences)
   return (
     <html lang="en">
       <head>
@@ -34,7 +33,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
         {children}
-        {experiences}
         
       </body>
     </html>

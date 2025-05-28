@@ -1,6 +1,5 @@
-import PersonnalsCard from "./personnalsCard";
-import Formation from "./formation";
-import Experience from "./experience";
+import PersonnalsCard from "./@personnalsCard/page";
+import Formation from "./@formations/page";
 import { Label } from "@/components/ui/label";
 
 export default async function Home() {
@@ -22,7 +21,6 @@ export default async function Home() {
         <Formation/>
       </section>
       <section className="p-6" id='experience'>
-        <Experience/>
       </section>
 
     </main>

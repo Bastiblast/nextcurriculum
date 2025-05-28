@@ -1,16 +1,15 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import React from 'react'
-import { CardDescription } from './personnalsCard'
 import { Separator } from '@/components/ui/separator'
-import { CarouselExperiences } from './carousel-experiences'
+import { CarouselExperiences } from '@/app/curriculumVitae/@experiences/carousel-experiences'
 
-export default function Experience() {
+export default function Page() {
   return (
     <Card className='flex justify-start'>
+                <CarouselExperiences/>
         <CardHeader>
             <CardTitle>
-                <CarouselExperiences/>
                 <h2 className='m-0 p-0 text-2xl md:text-3xl'>Experiences</h2>
             </CardTitle>
         </CardHeader>
