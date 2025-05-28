@@ -19,14 +19,14 @@ export default function Page() {
                 <h3 className='text-xl md:text-2xl'>Amazon associate 2016 2025</h3>
             </Label>
                 <Label className='flex items-center auto-cols-min'>
-                    <h4 className='py-3 text-lg md:text-xl'>Gestion d'équipe</h4>
+                    <h4 className='py-3 text-lg md:text-xl'>Gestion d&apos;équipe</h4>
                 </Label>
                 <div className='justify-start gap-3 grid md:grid-flow-col auto-rows-min'>
                     <Label className='md:w-10 text-center text-wrap'>depuis 2019</Label>
                     <div className='flex flex-col justify-center items-start w-70'>Expédition des commandes
                         <CardDescription>équipe de 10 à 30 personnes.</CardDescription>
                         <CardDescription>+ peu de transaction</CardDescription>
-                        <CardDescription>- haute fréquence d'évenement indésirable</CardDescription>
+                        <CardDescription>- haute fréquence d&apos;évenement indésirable</CardDescription>
                     </div>
                     <CardDescription>
                         <ul className='w-auto list-disc'>
@@ -53,7 +53,7 @@ export default function Page() {
                             <li>Organisation et optimisation des flux</li>
                             <li>Suivi des performances et des anomalies</li>
                             <li>Accompagnement et coaching</li>
-                            <li>Animation de projet et réalisation d'amélioration continue</li>
+                            <li>Animation de projet et réalisation d&apos;amélioration continue</li>
                         </ul>
                     </CardDescription>
                 </div>
@@ -70,10 +70,10 @@ export default function Page() {
                     <CardDescription>                        
                         <ul className='w-auto list-disc'>
                             <li>Accueil et suivie interimaire</li>
-                            <li>Fluidifier l'utilisation de l'espace de stockage</li>
+                            <li>Fluidifier l&apos;utilisation de l&apos;espace de stockage</li>
                             <li>Suivi des performances et des anomalies</li>
                             <li>Accompagnement et coaching</li>
-                            <li>Animation de projet et réalisation d'amélioration continue</li>
+                            <li>Animation de projet et réalisation d&apos;amélioration continue</li>
                         </ul>
                     </CardDescription>
                 </div>
@@ -84,7 +84,7 @@ export default function Page() {
                     <div className='flex flex-col justify-center items-start w-70'>
                         Contrôle inventaire et qualité
                         <CardDescription>équipe de 10 à 20 personnes.</CardDescription>
-                        <CardDescription>+ peu d'effectif</CardDescription>
+                        <CardDescription>+ peu d&apos;effectif</CardDescription>
                         <CardDescription>- composé de postes à haute complexité</CardDescription>
                     </div>
                     <CardDescription>                        

@@ -1,6 +1,3 @@
-import PersonnalsCard from "./@personnalsCard/page";
-import Formation from "./@formations/page";
-import Experience from "../experience";
 import { Label } from "@/components/ui/label";
 
 export default function Layout({
