@@ -12,7 +12,7 @@ export default function Layout({
 
   
   return (
-    <div className="bg-stone-100 m-2">
+    <div className="bg-stone-150 m-2">
     
     <header className="md:flex justify-start md:justify-between">
       <Label>
