@@ -2,26 +2,29 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Label } from '@/components/ui/label'
 import React from 'react'
 import { Separator } from '@/components/ui/separator'
-import { CarouselExperiences } from '@/app/curriculumVitae/@experiences/carousel-experiences'
+import CarouselExperiences from '@/app/curriculumVitae/@experiences/carousel-experiences'
+import CarouselItem from './carousel-item'
 
 export default function Page() {
   return (
-    <Card className='flex justify-start'>
-                <CarouselExperiences/>
+    <Card className=''>
         <CardHeader>
             <CardTitle>
                 <h2 className='m-0 p-0 text-2xl md:text-3xl'>Experiences</h2>
             </CardTitle>
         </CardHeader>
         <CardContent>
-            <div className='gap-2 grid auto-rows-auto'>
+            <div className='justify-center gap-2 grid w-full'>
             <Label className='text-center'>
                 <h3 className='text-xl md:text-2xl'>Amazon associate 2016 2025</h3>
             </Label>
-                <Label className='flex items-center auto-cols-min'>
+                <Label className='flex items-center'>
                     <h4 className='py-3 text-lg md:text-xl'>Gestion d&apos;équipe</h4>
                 </Label>
-                <div className='justify-start gap-3 grid md:grid-flow-col auto-rows-min'>
+                <CarouselExperiences>
+                <CarouselItem>
+
+                <div className='justify-start gap-3 grid md:grid-flow-row auto-rows-min'>
                     <Label className='md:w-10 text-center text-wrap'>depuis 2019</Label>
                     <div className='flex flex-col justify-center items-start w-70'>Expédition des commandes
                         <CardDescription>équipe de 10 à 30 personnes.</CardDescription>
@@ -38,8 +41,10 @@ export default function Page() {
                     </CardDescription>
 
                 </div>
-                <Separator/>
-                <div className='justify-start gap-3 grid md:grid-flow-col auto-rows-min'>
+                </CarouselItem>
+                <CarouselItem>
+
+                <div className='justify-start gap-3 grid md:grid-flow-row auto-rows-min'>
                     <Label className='md:w-10 text-center text-wrap'>depuis 2021</Label>
                     <div className='flex flex-col justify-center items-start w-70'>
                         Emballage et injection de colis
@@ -57,9 +62,12 @@ export default function Page() {
                         </ul>
                     </CardDescription>
                 </div>
-                <Separator/>
+                
+                </CarouselItem>
+                <CarouselItem>
 
-                <div className='justify-start gap-3 grid md:grid-flow-col auto-rows-min'>
+
+                <div className='justify-start gap-3 grid md:grid-flow-row auto-rows-min'>
                     <Label className='md:w-10 text-center text-wrap'>depuis 2023</Label>
                     <div className='flex flex-col justify-center items-start w-70'>
                         Prélèvement et mise en rayon
@@ -77,9 +85,11 @@ export default function Page() {
                         </ul>
                     </CardDescription>
                 </div>
-                <Separator/>
+                </CarouselItem>
+                
+                <CarouselItem>
 
-                <div className='justify-start gap-3 grid md:grid-flow-col auto-rows-min'>
+                <div className='justify-start gap-3 grid md:grid-flow-row auto-rows-min'>
                     <Label className='md:w-10 text-center text-wrap'>depuis 2024</Label>
                     <div className='flex flex-col justify-center items-start w-70'>
                         Contrôle inventaire et qualité
@@ -97,6 +107,10 @@ export default function Page() {
                         </ul>
                     </CardDescription>
                 </div>
+                </CarouselItem>
+
+                </CarouselExperiences>
+
             </div>
         
             
