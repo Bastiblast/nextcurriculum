@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "rsync": "next build && rsync -ar . LearnDebianUser:~/www/curriculum.fr"
+    "rsync": "rsync -ar . LearningDebian:~/www/curriculum.fr"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",

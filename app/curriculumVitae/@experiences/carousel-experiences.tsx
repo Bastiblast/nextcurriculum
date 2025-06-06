@@ -13,7 +13,7 @@ export default function CarouselExperiences(props: React.PropsWithChildren) {
       opts={{
         align: "start",
       }}
-      className="max-w-md mx-8 md:max-w-xl"
+      className="max-w-xs md:max-w-xl"
     >
       <CarouselContent>
         {props.children}
