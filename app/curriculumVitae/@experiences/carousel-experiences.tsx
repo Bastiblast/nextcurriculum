@@ -7,14 +7,13 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 
-const options = ["Formation","Experiences","Project","Compétence","Activité"]
 export default function CarouselExperiences(props: React.PropsWithChildren) {
   return (
     <Carousel
       opts={{
         align: "start",
       }}
-      className="max-w-sm"
+      className="max-w-md mx-8 md:max-w-xl"
     >
       <CarouselContent>
         {props.children}
