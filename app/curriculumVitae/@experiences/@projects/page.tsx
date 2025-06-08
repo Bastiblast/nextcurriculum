@@ -4,7 +4,7 @@ import CarouselExperiences from '@/app/curriculumVitae/@experiences/carousel-exp
 import CarouselItem from '../carousel-item'
 import { CardDescription } from '@/components/ui/card'
 
-export default function Instructor() {
+export default function Projects() {
   return (
     <div className='grid w-full justify-center md:justify-start'>
 
@@ -36,8 +36,8 @@ export default function Instructor() {
                     <Label className='md:w-10 text-center text-wrap'>2023</Label>
                     <div className='flex flex-col justify-center items-start'>
                         Tableau de bord de suivi des prélèvements de commande
-                        <CardDescription>Tracking de l'activité</CardDescription>
-                        <CardDescription>Réduit l'utilisation des sites annexes</CardDescription>
+                        <CardDescription>Tracking de l&apos;activité</CardDescription>
+                        <CardDescription>Réduit l&apos;utilisation des sites annexes</CardDescription>
                         <CardDescription>Regroupe les informations</CardDescription>
                     </div>
                     <CardDescription>
