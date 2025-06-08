@@ -37,8 +37,8 @@ export default function PersonnalsCard () {
     </CardHeader>
     <CardContent>
       <Label>Née le {intlBirthDate}</Label>
-      <Label><SVGMail/> million.bastien@gmail.com /</Label>
-      <Label><SVGPhone /> 06.33.89.42.37</Label>
+      <Label><SVGMail/> <a href="mailto:million.bastien@gmail.com">million.bastien@gmail.com</a> /</Label>
+      <Label><SVGPhone /> <a href="tel:+33633894237">06.33.89.42.37</a></Label>
     </CardContent>
     <CardFooter>Team leader depuis 2019</CardFooter>
   </Card>

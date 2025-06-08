@@ -13,7 +13,7 @@ export default function Page() {
       alt='desert background' 
       fill quality={100} 
       style={
-        { objectFit: 'cover',
+        { objectFit: 'contain',
           bottom: '0'
         }} 
   
@@ -24,6 +24,7 @@ export default function Page() {
           <h1 className='md:text-4xl'>Bienvenue sur mon domaine</h1>
           <Separator className='m-1'/>
           <Link href='/curriculumVitae'>See my curriculum</Link>
+          <Link href='/veryBeginnerTutorials'>Browse content in my Very Beginner Tutorials</Link>
         </div>
     </header>
     </>

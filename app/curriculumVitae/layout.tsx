@@ -12,7 +12,8 @@ export default function Layout({
 
   
   return (
-    <div className="bg-stone-150 m-2">
+
+    <div className="bg-stone-100 border-6 border-slate-800 shadow-2xl rounded-xl">
     
     <header className="md:flex justify-start md:justify-between">
       <Label>
