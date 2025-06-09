@@ -1,3 +1,4 @@
+import { ModeToggle } from "@/components/theme-toggle";
 import { Label } from "@/components/ui/label";
 
 export default function Layout({
@@ -14,6 +15,10 @@ export default function Layout({
   return (
 
     <div className="bg-stone-100 border-6 border-slate-800 shadow-2xl rounded-xl">
+      <div className="absolute top-1 left-1">
+
+                <ModeToggle/>
+      </div>
     
     <header className="md:flex justify-start md:justify-between">
       <Label>
