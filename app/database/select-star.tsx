@@ -3,10 +3,9 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Star } from 'lucide-react';
-import { resolveViewport } from 'next/dist/lib/metadata/resolve-metadata';
 import React from 'react'
 
-export default function SelectStar(props: {star: number,changeRating: (star: number) => Promise<void>}) {
+export default function SelectStar(props: {star: number,changeRating: () => Promise<void>}) {
   const { star,changeRating } = props;   
   const [starValue, setStarValue] = React.useState<null | number>(null);
   return (

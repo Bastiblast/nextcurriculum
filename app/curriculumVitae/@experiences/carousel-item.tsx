@@ -1,5 +1,5 @@
 'use client'
-
+import React from "react"
 import { useCarousel } from "@/components/ui/carousel"
 import { cn } from "@/lib/utils"
 

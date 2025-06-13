@@ -1,6 +1,6 @@
 import { ModeToggle } from "@/components/theme-toggle";
 import { Label } from "@/components/ui/label";
-
+import React from "react";
 export default function Layout({
   experiences,
   formations,
