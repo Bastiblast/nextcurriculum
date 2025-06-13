@@ -4,9 +4,10 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Star } from 'lucide-react';
 import React from 'react'
+import { changeRating } from './prismaTool';
 
-export default function SelectStar(props: {star: number,changeRating: () => Promise<void>}) {
-  const { star,changeRating } = props;   
+export default function SelectStar(props: {star: number,id: string}) {
+  const { star,id } = props;   
   const [starValue, setStarValue] = React.useState<null | number>(null);
   return (
     <div className='flex items-center gap-1'>
@@ -16,7 +17,7 @@ export default function SelectStar(props: {star: number,changeRating: () => Prom
         return (
         <span key={i} >
             <Button asChild className='p-0 h-6 w-6 rounded-full bg-transparent hover:bg-transparent focus:bg-transparent'
-            onClick={() => changeRating(i)}
+            onClick={() => changeRating(id,i)}
             
             onMouseEnter={() => {
                 // Handle mouse enter event
