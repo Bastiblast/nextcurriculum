@@ -4,10 +4,10 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Star } from 'lucide-react';
 import React from 'react'
-import { changeRating } from './prismaTool';
 
-export default function SelectStar(props: {star: number,id: string}) {
-  const { star,id } = props;   
+// eslint-disable-next-line no-unused-vars
+export default function SelectStar(props: {changeRating: (reviewId: string, star: number) => Promise<void>;star: number,id: string}) {
+  const { star,id,changeRating } = props;   
   const [starValue, setStarValue] = React.useState<null | number>(null);
   return (
     <div className='flex items-center gap-1'>
