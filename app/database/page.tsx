@@ -3,6 +3,9 @@ import { prisma } from '@/lib/prisma'
 import React from 'react'
 import SelectStar from './select-star'
 import { revalidatePath } from 'next/cache'
+import EditTitle from './edit-title'
+import CreateReview from './create-review'
+import { X } from 'lucide-react'
 
 export default async function page() {
 
@@ -19,6 +22,7 @@ export default async function page() {
     revalidatePath('/database')
   }
     return (<>
+    <CreateReview />
     <div>The reviewsse</div>
     {reviews.map((review) => (
       <Card key={review.id}>
@@ -30,6 +34,18 @@ export default async function page() {
         <p>Rating: {review.star}</p>
           <SelectStar changeRating={changeRating} id={review.id} star={review.star}/>
         </CardDescription>
+        <EditTitle reviewId={review.id} />
+ 
+          <form action={async () => {
+            'use server'
+            await prisma.review.delete({
+              where: { id: review.id }
+            })
+            revalidatePath('/database')
+          }
+          }>
+            <X type="submit" className="">Delete</X>
+          </form>
       </Card>
     ))}
     </>
