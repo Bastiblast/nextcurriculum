@@ -1,8 +1,12 @@
+import UnderConstruction from "../under-construction"
+
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ compose: string }>
 }) {
-  const { slug } = await params
-  return <div>My Post: {slug}</div>
+  const { compose } = await params
+  return <div> My Post: {compose}
+  <UnderConstruction />
+  </div>
 }

@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/sidebar"
 import Link from "next/link"
 import { useParams } from "next/navigation"
+import { useRef } from "react"
 
 // This is sample data.
 const data = {
@@ -87,6 +88,10 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: {props : React.ComponentProps<typeof Sidebar> }) {
+  const params = useParams()
+  const slugs = params as { techno?: string, compose?: string, element?: string }
+
+  console.log("Slugs:", slugs)
 
 
   return (
@@ -116,15 +121,14 @@ export function AppSidebar({ ...props }: {props : React.ComponentProps<typeof Si
           <SidebarGroupContent>
             <SidebarMenu>
               {data.tree.map((item, index) => {
+                console.log("debug indexes", item,Array.isArray(item))
+                const indexes = Array.isArray(item) ? item[0].replaceAll(" ","") : item.replaceAll(" ","")
+                console.log("top level indexes", indexes)
                 return (<div key={index} className="w-full">
-                  <Link passHref href={`/veryBeginnerTutorials/Rubriques/${item[0].replaceAll(" ","")}`} className="w-full">
-                  <div onClick={(e) => {
-                    console.log("Clicked on item:", item,data.tree[index])
-                  }}>
 
-                  <Tree item={item} />
-                  </div>
-                  </Link>
+                  <Link passHref href={`/veryBeginnerTutorials/Rubriques/${indexes}`} className="w-full">
+                  {<Tree item={item} indexes={[indexes]} />}
+              </Link>
                   </div>
               )})}
             </SidebarMenu>
@@ -136,33 +140,24 @@ export function AppSidebar({ ...props }: {props : React.ComponentProps<typeof Si
   )
 }
 
-function Tree({ item }: { item: string | any[]}) {
-  const params = useParams()
-  const slugs = params as { techno?: string, compose?: string, element?: string }
-  const techno = slugs.techno ? "/" +  slugs.techno.replaceAll(" ","") : ""
-  const compose = slugs.compose ? "/" + slugs.compose.replaceAll(" ","") : ""
-  const element = slugs.element ? "/" + slugs.element.replaceAll(" ","") : ""
-  const newPath = "/veryBeginnerTutorials/Rubriques/"
+function Tree({ item, indexes }: { item: string | any[], indexes: string[] }) {
 
   const [name, ...items] = Array.isArray(item) ? item : [item]
+  const incrementIndexes = indexes.find((i: string) => i === name.replaceAll(" ","")) ? [...indexes]  : [...indexes,name.replaceAll(" ","")]
+  const route = incrementIndexes.join("/").replaceAll(",","/")
 
-  console.log("item:", item, "name:", name, "items:", items)
   if (!items.length) {
     return (
       <SidebarMenuButton
         isActive={name === "button.tsx"}
         className="data-[active=true]:bg-transparent"
       >
-        <div onClick={(e) => {
-          console.log("Clicked on solo item:", item, data.tree[item])
-        }}>
+
 
         <File />
-              <Link passHref href={newPath + "/" + name} className="w-full">
-
+        <Link passHref href={`/veryBeginnerTutorials/Rubriques/${route}`} className="w-full">
         {name}
         </Link>
-        </div>
       </SidebarMenuButton>
     )
   }
@@ -182,19 +177,22 @@ function Tree({ item }: { item: string | any[]}) {
         </CollapsibleTrigger>
         <CollapsibleContent>
           <SidebarMenuSub>
-            {items.map((subItem, index) => (
-              <div key={index} className="w-full" onClick={
-                (e) => {
-                  e.stopPropagation()
-                  //console.log(data.tree[index])
-                }
-                }>
+            {
+            
+            items.map((subItem, index) => {
+              const item = Array.isArray(subItem) ? [subItem[0].replaceAll(" ","")] : [subItem.replaceAll(" ","")]
+              const addSubIndexes = incrementIndexes.includes(item[0]) ? incrementIndexes : [...incrementIndexes, item[0]]
+              const route = addSubIndexes.join("/").replaceAll(",","/")
+              return (
 
-              <Link key={index} replace href={newPath + "/" + subItem[0]} className="w-full">
-              <Tree key={index} item={subItem} />
-              </Link>
+              <div key={index} className="w-full">
+
+              <Link href={`/veryBeginnerTutorials/Rubriques/${route}`} className="w-full">
+
+              <Tree key={index} item={subItem} indexes={addSubIndexes} />
+             </Link>
               </div>
-            ))}
+            )})}
           </SidebarMenuSub>
         </CollapsibleContent>
       </Collapsible>
