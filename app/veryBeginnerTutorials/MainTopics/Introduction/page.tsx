@@ -1,7 +1,5 @@
-'use client'
-import { useRouter } from 'next/navigation'
-export default function Page() {
+import UnderConstruction from "../../Rubriques/[techno]/under-construction";
 
-const router = useRouter()    
-router.push('/veryBeginnerTutorials/')
+export default function Page() {
+return <UnderConstruction />
 }

@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import { ChevronRight, File, Folder } from "lucide-react"
 
@@ -20,6 +22,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
+import { useParams } from "next/navigation"
 
 // This is sample data.
 const data = {
@@ -83,7 +86,9 @@ const data = {
   ],
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ ...props }: {props : React.ComponentProps<typeof Sidebar> }) {
+
+
   return (
     <Sidebar {...props}>
       <SidebarContent>
@@ -110,11 +115,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarGroupLabel>Rubriques</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {data.tree.map((item, index) => (
-                <Link key={index} href={`/veryBeginnerTutorials/Rubriques/${item[0].replaceAll(" ","")}`} className="w-full">
+              {data.tree.map((item, index) => {
+                return (<div key={index} className="w-full">
+                  <Link passHref href={`/veryBeginnerTutorials/Rubriques/${item[0].replaceAll(" ","")}`} className="w-full">
+                  <div onClick={(e) => {
+                    console.log("Clicked on item:", item,data.tree[index])
+                  }}>
+
                   <Tree item={item} />
-                </Link>
-              ))}
+                  </div>
+                  </Link>
+                  </div>
+              )})}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -124,17 +136,33 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   )
 }
 
-function Tree({ item }: { item: string | any[] }) {
+function Tree({ item }: { item: string | any[]}) {
+  const params = useParams()
+  const slugs = params as { techno?: string, compose?: string, element?: string }
+  const techno = slugs.techno ? "/" +  slugs.techno.replaceAll(" ","") : ""
+  const compose = slugs.compose ? "/" + slugs.compose.replaceAll(" ","") : ""
+  const element = slugs.element ? "/" + slugs.element.replaceAll(" ","") : ""
+  const newPath = "/veryBeginnerTutorials/Rubriques/"
+
   const [name, ...items] = Array.isArray(item) ? item : [item]
 
+  console.log("item:", item, "name:", name, "items:", items)
   if (!items.length) {
     return (
       <SidebarMenuButton
         isActive={name === "button.tsx"}
         className="data-[active=true]:bg-transparent"
       >
+        <div onClick={(e) => {
+          console.log("Clicked on solo item:", item, data.tree[item])
+        }}>
+
         <File />
+              <Link passHref href={newPath + "/" + name} className="w-full">
+
         {name}
+        </Link>
+        </div>
       </SidebarMenuButton>
     )
   }
@@ -155,7 +183,17 @@ function Tree({ item }: { item: string | any[] }) {
         <CollapsibleContent>
           <SidebarMenuSub>
             {items.map((subItem, index) => (
+              <div key={index} className="w-full" onClick={
+                (e) => {
+                  e.stopPropagation()
+                  //console.log(data.tree[index])
+                }
+                }>
+
+              <Link key={index} replace href={newPath + "/" + subItem[0]} className="w-full">
               <Tree key={index} item={subItem} />
+              </Link>
+              </div>
             ))}
           </SidebarMenuSub>
         </CollapsibleContent>

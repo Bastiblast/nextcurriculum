@@ -10,11 +10,12 @@ import { ReactNode } from "react"
 import VBTBreadcrumb from "./breadcrumb"
 
 export default function Layout({children}: Readonly<{children: ReactNode}>) {
+  console.log("Layout veryBeginnerTutorials")
   return (
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+        <header className="flex items-center gap-2 px-4 border-b h-16 shrink-0">
           <SidebarTrigger className="-ml-1" />
           <Separator
             orientation="vertical"
