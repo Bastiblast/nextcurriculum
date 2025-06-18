@@ -22,8 +22,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
-import { useParams } from "next/navigation"
-import { useRef } from "react"
+import { notFound, useParams } from "next/navigation"
 
 // This is sample data.
 const data = {
@@ -121,13 +120,12 @@ export function AppSidebar({ ...props }: {props : React.ComponentProps<typeof Si
           <SidebarGroupContent>
             <SidebarMenu>
               {data.tree.map((item, index) => {
-                console.log("debug indexes", item,Array.isArray(item))
-                const indexes = Array.isArray(item) ? item[0].replaceAll(" ","") : item.replaceAll(" ","")
-                console.log("top level indexes", indexes)
+                const header = Array.isArray(item) ? item[0] : item
+                const trimmedHeader = typeof header === "string" ? header.replaceAll(" ","") : notFound()
                 return (<div key={index} className="w-full">
 
-                  <Link passHref href={`/veryBeginnerTutorials/Rubriques/${indexes}`} className="w-full">
-                  {<Tree item={item} indexes={[indexes]} />}
+                  <Link passHref href={`/veryBeginnerTutorials/Rubriques/${trimmedHeader}`} className="w-full">
+                  {<Tree item={item} indexes={[trimmedHeader]} />}
               </Link>
                   </div>
               )})}
@@ -143,7 +141,9 @@ export function AppSidebar({ ...props }: {props : React.ComponentProps<typeof Si
 function Tree({ item, indexes }: { item: string | any[], indexes: string[] }) {
 
   const [name, ...items] = Array.isArray(item) ? item : [item]
+
   const incrementIndexes = indexes.find((i: string) => i === name.replaceAll(" ","")) ? [...indexes]  : [...indexes,name.replaceAll(" ","")]
+
   const route = incrementIndexes.join("/").replaceAll(",","/")
 
   if (!items.length) {
