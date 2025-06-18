@@ -5,7 +5,7 @@ import SelectStar from './select-star'
 import { revalidatePath } from 'next/cache'
 import EditTitle from './edit-title'
 import CreateReview from './create-review'
-import { X } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 export default async function page() {
 
@@ -44,7 +44,7 @@ export default async function page() {
             revalidatePath('/database')
           }
           }>
-            <X type="submit" className="">Delete</X>
+            <Button type="submit" className="">Delete</Button>
           </form>
       </Card>
     ))}
