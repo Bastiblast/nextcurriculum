@@ -6,7 +6,7 @@ export default async function Page({
   params: Promise<{ techno: string }>
 }) {
   const { techno } = await params
-  return <div> My Post: {techno}
+  return <div> My techno Post: {techno}
   <UnderConstruction />
   </div>
 }

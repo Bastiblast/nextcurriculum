@@ -22,7 +22,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
-import { notFound, useParams } from "next/navigation"
+import { notFound, useParams,useRouter } from "next/navigation"
 
 // This is sample data.
 const data = {
@@ -89,7 +89,7 @@ const data = {
 export function AppSidebar({ ...props }: {props : React.ComponentProps<typeof Sidebar> }) {
   const params = useParams()
   const slugs = params as { techno?: string, compose?: string, element?: string }
-
+  const router = useRouter()
   console.log("Slugs:", slugs)
 
 
@@ -123,10 +123,13 @@ export function AppSidebar({ ...props }: {props : React.ComponentProps<typeof Si
                 const header = Array.isArray(item) ? item[0] : item
                 const trimmedHeader = typeof header === "string" ? header.replaceAll(" ","") : notFound()
                 return (<div key={index} className="w-full">
+        <div onClick={() => {
+          console.log("Navigating to:", `/veryBeginnerTutorials/Rubriques/${trimmedHeader}`)
+          return router.push(`/veryBeginnerTutorials/Rubriques/${trimmedHeader}`)}} className="w-full">
 
-                  <Link passHref href={`/veryBeginnerTutorials/Rubriques/${trimmedHeader}`} className="w-full">
-                  {<Tree item={item} indexes={[trimmedHeader]} />}
-              </Link>
+                  <Tree item={item} indexes={[trimmedHeader]} />
+          </div>
+        
                   </div>
               )})}
             </SidebarMenu>
@@ -146,6 +149,8 @@ function Tree({ item, indexes }: { item: string | any[], indexes: string[] }) {
 
   const route = incrementIndexes.join("/").replaceAll(",","/")
 
+  const router = useRouter()
+
   if (!items.length) {
     return (
       <SidebarMenuButton
@@ -155,9 +160,11 @@ function Tree({ item, indexes }: { item: string | any[], indexes: string[] }) {
 
 
         <File />
-        <Link passHref href={`/veryBeginnerTutorials/Rubriques/${route}`} className="w-full">
+        <div onClick={() => {
+          console.log("Navigating to:", `/veryBeginnerTutorials/Rubriques/${route}`)
+          return router.push(`/veryBeginnerTutorials/Rubriques/${route}`)}} className="w-full">
         {name}
-        </Link>
+        </div>
       </SidebarMenuButton>
     )
   }
@@ -187,10 +194,13 @@ function Tree({ item, indexes }: { item: string | any[], indexes: string[] }) {
 
               <div key={index} className="w-full">
 
-              <Link href={`/veryBeginnerTutorials/Rubriques/${route}`} className="w-full">
+               <div onClick={(e) => {
+                e.stopPropagation()
+                console.log("Navigating to:", `/veryBeginnerTutorials/Rubriques/${route}`)
+                return router.push(`/veryBeginnerTutorials/Rubriques/${route}`)}} className="z-10 w-full">
 
               <Tree key={index} item={subItem} indexes={addSubIndexes} />
-             </Link>
+             </div>
               </div>
             )})}
           </SidebarMenuSub>
