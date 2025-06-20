@@ -2,7 +2,6 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { CodeBlock } from "@/components/ui/code-block"; // You may need to create this or use a pre-styled code block
 
 const SSHPage: React.FC = () => (
   <main className="space-y-8 mx-auto p-6 max-w-2xl">

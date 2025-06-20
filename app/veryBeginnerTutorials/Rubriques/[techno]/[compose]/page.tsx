@@ -1,12 +1,9 @@
-import UnderConstruction from "../under-construction"
+import { notFound } from 'next/navigation'
+import React from 'react'
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ compose: string }>
-}) {
-  const { compose } = await params
-  return <div> My compose Post: {compose}
-  <UnderConstruction />
-  </div>
+export default function page() {
+    notFound()
+  return (
+    <div>page</div>
+  )
 }

@@ -23,70 +23,11 @@ import {
 } from "@/components/ui/sidebar"
 import Link from "next/link"
 import { notFound, useParams,useRouter } from "next/navigation"
-
+import data from "./structure"
 // This is sample data.
-const data = {
-  changes: [
-    {
-      file: "Introduction",
-      state: "M",
-    },
-    {
-      file: "Principles SOLID",
-      state: "U",
-    },
-    {
-      file: "app/layout.tsx",
-      state: "M",
-    },
-  ],
-  // TODO - use data to make static rendering
-  tree: [
-    [
-      "Web Development",
-      [
-        "HTML",
-        ["hello", ["route.ts"]],
-        "page.tsx",
-        "layout.tsx",
-        ["CSS", ["page.tsx"]],
-      ],
-      ["CSS", ["page.tsx"]],
-      [
-        "JavaScript", 
-        ["native",
-          
-        ],
-        ["Librairies", ["React", "Nextjs"]]
-      ],
-            [
-        "Typescript", 
-      ],
-    ],
-    [
-      "Server powering",
-      ["SSH", "button.tsx", "card.tsx"],
-      "header.tsx",
-      "footer.tsx",
-    ],
-    ["Tools",
-      ["WSL2"], 
-      ["IDE",
-        "VSCode",
-        "Extensions"
-      ]
-    ],
-    ["public", "favicon.ico", "vercel.svg"],
-    ".eslintrc.json",
-    ".gitignore",
-    "next.config.js",
-    "tailwind.config.js",
-    "package.json",
-    "README.md",
-  ],
-}
 
-export function AppSidebar({ ...props }: {props : React.ComponentProps<typeof Sidebar> }) {
+
+export function AppSidebar() {
   const params = useParams()
   const slugs = params as { techno?: string, compose?: string, element?: string }
   const router = useRouter()
@@ -94,7 +35,7 @@ export function AppSidebar({ ...props }: {props : React.ComponentProps<typeof Si
 
 
   return (
-    <Sidebar {...props}>
+    <Sidebar>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Main topic</SidebarGroupLabel>
