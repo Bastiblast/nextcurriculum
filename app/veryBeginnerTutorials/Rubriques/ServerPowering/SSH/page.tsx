@@ -34,7 +34,7 @@ const SSHPage: React.FC = () => (
         <section>
           <h2 className="mb-2 font-semibold text-lg">Generate an ED25519 SSH Key</h2>
           <pre>
-            ssh-keygen -t ed25519 -C "your_email@example.com"
+            ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;
           </pre>
           <ol className="space-y-1 mt-2 pl-5 list-decimal">
             <li>Run the command above in your terminal.</li>

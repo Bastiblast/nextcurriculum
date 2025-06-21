@@ -9,7 +9,7 @@ const data = {
       state: "U",
     },
     {
-      file: "app/layout.tsx",
+      file: "Clean Code",
       state: "M",
     },
   ],
@@ -46,7 +46,8 @@ const data = {
       ["IDE",
         "VSCode",
         "Extensions"
-      ]
+      ],
+      ["PowerToys"]
     ],
     ["public", "favicon.ico", "vercel.svg"],
     ".eslintrc.json",
