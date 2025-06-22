@@ -17,14 +17,18 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { usePathname } from "next/navigation"
 
 export default function VBTBreadcrumb() {
+  const path = usePathname()
+  const [home,...segments] = path.split("/").filter(Boolean)
+  console.log("segments:", segments)
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link href="/">Home</Link>
+            <Link href="/veryBeginnerTutorials">{home}</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />

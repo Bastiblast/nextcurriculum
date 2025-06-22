@@ -29,7 +29,7 @@ const data = {
         ["native",
           
         ],
-        ["Librairies", ["React", "Nextjs"]]
+        ["Librairies", "React", "Next js"]
       ],
             [
         "Typescript", 
@@ -38,7 +38,8 @@ const data = {
     [
       "Server Powering",
       ["SSH", "button.tsx", "card.tsx"],
-      ["Linux", "global", "VIM"],
+      ["Linux", 
+        "global", "VIM","ownership"],
 
     ],
     ["Tools",
@@ -47,15 +48,8 @@ const data = {
         "VSCode",
         "Extensions"
       ],
-      ["PowerToys"]
+      ["Power Toys"]
     ],
-    ["public", "favicon.ico", "vercel.svg"],
-    ".eslintrc.json",
-    ".gitignore",
-    "next.config.js",
-    "tailwind.config.js",
-    "package.json",
-    "README.md",
   ],
 }
 

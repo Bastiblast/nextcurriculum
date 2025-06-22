@@ -7,7 +7,6 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { ReactNode, Suspense } from "react"
-import VBTBreadcrumb from "./breadcrumb"
 
 export default function Template({children}: Readonly<{children: ReactNode}>) {
   console.log("Layout veryBeginnerTutorials")
@@ -21,7 +20,6 @@ export default function Template({children}: Readonly<{children: ReactNode}>) {
             orientation="vertical"
             className="mr-2 data-[orientation=vertical]:h-4"
           />
-        <VBTBreadcrumb/>
         </header>
         <Suspense key={Date.now()} fallback={<Loading />}>
               {children}

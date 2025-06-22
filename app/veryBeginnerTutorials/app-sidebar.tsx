@@ -22,21 +22,30 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
-import { notFound, useParams,useRouter } from "next/navigation"
+import { notFound,useRouter } from "next/navigation"
 import data from "./structure"
 // This is sample data.
 
 
 export function AppSidebar() {
-  const params = useParams()
-  const slugs = params as { techno?: string, compose?: string, element?: string }
-  const router = useRouter()
-  console.log("Slugs:", slugs)
-
 
   return (
     <Sidebar>
       <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>Very Beginner Tutorials</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton>
+                  <Link href="/veryBeginnerTutorials" className="w-full">
+                    Home
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
         <SidebarGroup>
           <SidebarGroupLabel>Main topic</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -61,12 +70,14 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {data.tree.map((item, index) => {
-                const header = Array.isArray(item) ? item[0] : item
+                const [header] = Array.isArray(item) ? item : [item]
                 const trimmedHeader = typeof header === "string" ? header.replaceAll(" ","") : notFound()
                 return (<div key={index} className="w-full">
-        <div onClick={() => {
+        <div onClick={(e) => {
+          e.stopPropagation
           console.log("Navigating to:", `/veryBeginnerTutorials/Rubriques/${trimmedHeader}`)
-          return router.push(`/veryBeginnerTutorials/Rubriques/${trimmedHeader}`)}} className="w-full">
+          //return router.push(`/veryBeginnerTutorials/Rubriques/${trimmedHeader}`)
+          }} className="w-full">
 
                   <Tree item={item} indexes={[trimmedHeader]} />
           </div>
@@ -97,15 +108,17 @@ function Tree({ item, indexes }: { item: string | any[], indexes: string[] }) {
       <SidebarMenuButton
         isActive={name === "button.tsx"}
         className="data-[active=true]:bg-transparent"
+        onClick={() => {
+          return router.push(`/veryBeginnerTutorials/Rubriques/${route}`)}}
       >
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" />
+</svg>
 
 
-        <File />
-        <div onClick={() => {
-          console.log("Navigating to:", `/veryBeginnerTutorials/Rubriques/${route}`)
-          return router.push(`/veryBeginnerTutorials/Rubriques/${route}`)}} className="w-full">
+
+
         {name}
-        </div>
       </SidebarMenuButton>
     )
   }
@@ -128,21 +141,11 @@ function Tree({ item, indexes }: { item: string | any[], indexes: string[] }) {
             {
             
             items.map((subItem, index) => {
-              const item = Array.isArray(subItem) ? [subItem[0].replaceAll(" ","")] : [subItem.replaceAll(" ","")]
-              const addSubIndexes = incrementIndexes.includes(item[0]) ? incrementIndexes : [...incrementIndexes, item[0]]
-              const route = addSubIndexes.join("/").replaceAll(",","/")
+              const [item] = Array.isArray(subItem) ? subItem : [subItem]
+              const itemKey = item.replaceAll(" ","")
+              const addSubIndexes = incrementIndexes.includes(itemKey) ? incrementIndexes : [...incrementIndexes, itemKey]
               return (
-
-              <div key={index} className="w-full">
-
-               <div onClick={(e) => {
-                e.stopPropagation()
-                console.log("Navigating to:", `/veryBeginnerTutorials/Rubriques/${route}`)
-                return router.push(`/veryBeginnerTutorials/Rubriques/${route}`)}} className="z-10 w-full">
-
-              <Tree key={index} item={subItem} indexes={addSubIndexes} />
-             </div>
-              </div>
+                <Tree key={index} item={subItem} indexes={addSubIndexes} />
             )})}
           </SidebarMenuSub>
         </CollapsibleContent>
