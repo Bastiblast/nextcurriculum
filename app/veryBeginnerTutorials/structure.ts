@@ -25,11 +25,14 @@ const data = {
       ],
       ["CSS", ["page.tsx"]],
       [
-        "JavaScript", 
+        "Javascript", 
+
         ["native",
           
         ],
-        ["Librairies", "React", "Next js"]
+        ["Librairies", "React", "Next js"],
+      ["ORM", "Prisma"],
+
       ],
             [
         "Typescript", 
@@ -40,6 +43,7 @@ const data = {
       ["SSH", "button.tsx", "card.tsx"],
       ["Linux", 
         "global", "VIM","ownership"],
+      ["Database", "PostgreSQL"],
 
     ],
     ["Tools",
