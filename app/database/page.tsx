@@ -4,7 +4,7 @@ import React from 'react'
 import SelectStar from './select-star'
 import { revalidatePath } from 'next/cache'
 import EditTitle from './edit-title'
-import CreateReview from './create-review'
+import CreateReview from './review-form'
 import { Button } from '@/components/ui/button'
 
 export default async function page() {

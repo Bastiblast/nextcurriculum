@@ -1,3 +1,5 @@
+'use server';
+
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { Button } from '@/components/ui/button';
@@ -7,7 +9,6 @@ import { Label } from '@/components/ui/label';
 import { prisma } from '@/lib/prisma';
 
 async function createReview(formData: FormData) {
-    'use server';
     const title = formData.get('title') as string;
     const content = formData.get('content') as string;
     const rating = Number(formData.get('rating'));
@@ -29,29 +30,22 @@ async function createReview(formData: FormData) {
     redirect('/database');
 }
 
-export default function CreateReview() {
-    return (
-        <form action={createReview} className="space-y-4 max-w-md mx-auto mt-8">
-            <div>
-                <Label htmlFor="title">Title</Label>
-                <Input id="title" name="title" required />
-            </div>
-            <div>
-                <Label htmlFor="content">Content</Label>
-                <Textarea id="content" name="content" required />
-            </div>
-            <div>
-                <Label htmlFor="rating">Rating (1-5)</Label>
-                <Input
-                    id="rating"
-                    name="rating"
-                    type="number"
-                    min={1}
-                    max={5}
-                    required
-                />
-            </div>
-            <Button type="submit">Submit Review</Button>
-        </form>
-    );
-}
+export const deleteReview = async (reviewid : string) => {
+            'use server'
+            await prisma.review.delete({
+              where: { id: reviewid }
+            })
+            revalidatePath('/database')
+          }
+
+
+ export const changeRating = async (reviewId: string, star: number) => {
+    console.log('changeRating', reviewId, star)
+    await prisma.review.update({
+      where: { id: reviewId },
+      data: { star }
+    })
+
+    revalidatePath('/database')
+  }
+

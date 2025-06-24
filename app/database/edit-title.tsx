@@ -1,3 +1,4 @@
+        'use server';
 import { prisma } from '@/lib/prisma'; // Adjust the import path as needed
 import { revalidatePath } from 'next/cache';
 
@@ -7,7 +8,7 @@ type Props = {
 
 export default async function EditTitle({ reviewId }: Props) {
     async function updateTitle(formData: FormData) {
-        'use server';
+        "use server";
         const newTitle = formData.get('title') as string;
         if (!newTitle) return;
 
@@ -34,6 +35,6 @@ export default async function EditTitle({ reviewId }: Props) {
                 required
             />
             <button type="submit">Update Title</button>
-        </form>
-    );
+        </form>)
+    
 }
