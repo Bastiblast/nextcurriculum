@@ -1,11 +1,11 @@
-import * as React from "react"
+import * as React from "react";
 
 import {
   Carousel,
   CarouselContent,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
+} from "@/components/ui/carousel";
 
 export default function CarouselExperiences(props: React.PropsWithChildren) {
   return (
@@ -15,11 +15,9 @@ export default function CarouselExperiences(props: React.PropsWithChildren) {
       }}
       className="max-w-xs md:max-w-xl"
     >
-      <CarouselContent>
-        {props.children}
-      </CarouselContent>
+      <CarouselContent>{props.children}</CarouselContent>
       <CarouselPrevious />
       <CarouselNext />
     </Carousel>
-  )
+  );
 }

@@ -1,9 +1,7 @@
-'use client'
+"use client";
 
-import React from 'react'
+import React from "react";
 
 export default function Error() {
-  return (
-    <div>NotFound</div>
-  )
+  return <div>NotFound</div>;
 }

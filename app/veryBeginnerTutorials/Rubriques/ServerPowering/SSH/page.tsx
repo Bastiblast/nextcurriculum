@@ -15,11 +15,15 @@ const SSHPage: React.FC = () => (
       </CardHeader>
       <CardContent className="space-y-8">
         <section>
-          <h2 className="mb-2 font-semibold text-lg">Public Key vs Private Key</h2>
+          <h2 className="mb-2 font-semibold text-lg">
+            Public Key vs Private Key
+          </h2>
           <ul className="space-y-2 pl-5 list-disc">
             <li>
               <strong>Private Key:</strong> Stays on your computer. <br />
-              <span className="font-semibold text-red-600">Never share it!</span>
+              <span className="font-semibold text-red-600">
+                Never share it!
+              </span>
             </li>
             <li>
               <strong>Public Key:</strong> Can be shared. <br />
@@ -27,49 +31,63 @@ const SSHPage: React.FC = () => (
             </li>
           </ul>
           <p className="mt-2 text-muted-foreground">
-            <strong>How it works:</strong> When you connect, the server checks if you have the matching private key for the public key it has.
+            <strong>How it works:</strong> When you connect, the server checks
+            if you have the matching private key for the public key it has.
           </p>
         </section>
         <Separator />
         <section>
-          <h2 className="mb-2 font-semibold text-lg">Generate an ED25519 SSH Key</h2>
-          <pre>
-            ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;
-          </pre>
+          <h2 className="mb-2 font-semibold text-lg">
+            Generate an ED25519 SSH Key
+          </h2>
+          <pre>ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;</pre>
           <ol className="space-y-1 mt-2 pl-5 list-decimal">
             <li>Run the command above in your terminal.</li>
             <li>Press Enter to accept the default file location.</li>
             <li>Set a passphrase (optional, but recommended).</li>
           </ol>
           <p className="mt-2">
-            Your keys will be saved in <code className="bg-muted px-1 rounded">~/.ssh/id_ed25519</code> (private) and <code className="bg-muted px-1 rounded">~/.ssh/id_ed25519.pub</code> (public).
+            Your keys will be saved in{" "}
+            <code className="bg-muted px-1 rounded">~/.ssh/id_ed25519</code>{" "}
+            (private) and{" "}
+            <code className="bg-muted px-1 rounded">~/.ssh/id_ed25519.pub</code>{" "}
+            (public).
           </p>
         </section>
         <Separator />
         <section>
-          <h2 className="mb-2 font-semibold text-lg">Send Your Public Key to a Server</h2>
-          <pre>
-            ssh-copy-id -i ~/.ssh/id_ed25519.pub user@server-address
-          </pre>
+          <h2 className="mb-2 font-semibold text-lg">
+            Send Your Public Key to a Server
+          </h2>
+          <pre>ssh-copy-id -i ~/.ssh/id_ed25519.pub user@server-address</pre>
           <p className="mt-2">
-            Or manually copy the contents of <code className="bg-muted px-1 rounded">id_ed25519.pub</code> to <code className="bg-muted px-1 rounded">~/.ssh/authorized_keys</code> on the server.
+            Or manually copy the contents of{" "}
+            <code className="bg-muted px-1 rounded">id_ed25519.pub</code> to{" "}
+            <code className="bg-muted px-1 rounded">
+              ~/.ssh/authorized_keys
+            </code>{" "}
+            on the server.
           </p>
         </section>
         <Separator />
         <section>
-          <h2 className="mb-2 font-semibold text-lg">Build an SSH Config File</h2>
+          <h2 className="mb-2 font-semibold text-lg">
+            Build an SSH Config File
+          </h2>
           <p>
-            Create or edit <code className="bg-muted px-1 rounded">~/.ssh/config</code>:
+            Create or edit{" "}
+            <code className="bg-muted px-1 rounded">~/.ssh/config</code>:
           </p>
           <pre>
-{`Host myserver
+            {`Host myserver
   HostName server-address
   User your-username
   IdentityFile ~/.ssh/id_ed25519
 `}
           </pre>
           <p className="mt-2">
-            Now you can connect with <code className="bg-muted px-1 rounded">ssh myserver</code>.
+            Now you can connect with{" "}
+            <code className="bg-muted px-1 rounded">ssh myserver</code>.
           </p>
         </section>
       </CardContent>

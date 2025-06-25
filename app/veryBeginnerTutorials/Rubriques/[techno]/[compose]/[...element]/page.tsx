@@ -1,9 +1,7 @@
-import { notFound } from 'next/navigation'
-import React from 'react'
+import { notFound } from "next/navigation";
+import React from "react";
 
 export default function page() {
-    notFound()
-  return (
-    <div>page</div>
-  )
+  notFound();
+  return <div>page</div>;
 }

@@ -1,65 +1,104 @@
-'use client';
-
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@radix-ui/react-label";
+"use client";
 import { addReviewSafeAction } from "./review-safe-actions";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useAction } from "next-safe-action/hooks";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 
-export default function CreateReview() {
-    const formRef = useRef<HTMLFormElement>(null);
-    const {execute,result} = useAction(addReviewSafeAction);
+export default function CreateReview({className}: {className:string}) {
+  const formRef = useRef<HTMLFormElement>(null);
+  const { execute, result } = useAction(addReviewSafeAction);
 
-    console.log('result', result);
-    return (
-        <form ref={formRef} className="space-y-4 max-w-md mx-auto mt-8">
-            <div>
-                <Label htmlFor="title">Title</Label>
-                <Input id="title" name="title" required />
-            <span className="text-red-500 absolute">
-                {result?.validationErrors?.name && result?.validationErrors?.name["_errors"]?.join(', ' )}
-            </span>
-            </div>
-            <div>
-                <Label htmlFor="content">Content</Label>
-                <Textarea id="content" name="content" required />
-                            <span className="text-red-500 absolute">
-                {result?.validationErrors?.review && result?.validationErrors?.review["_errors"]?.join(', ' )}
-            </span>
-            </div>
-            <div>
-                <Label htmlFor="rating">Rating (1-5)</Label>
-                <Input
-                    id="rating"
-                    name="rating"
-                    type="number"
-                    min={1}
-                    max={5}
-                    required
-                />
-                                           <span className="text-red-500 absolute">
-                {result?.validationErrors?.star && result?.validationErrors?.star["_errors"]?.join(', ' )}
-            </span>
-            </div>
-            <Button 
-                  onClick={async (e) => {
-        e.preventDefault();
-        const formData = new FormData(formRef.current as HTMLFormElement);
-        // Typesafe action called from client.
-        const formObject = {
-          name: formData.get('title') as string,
-          review: formData.get('content') as string,
-          star: Number(formData.get('rating')) as number,
-        }
-        console.log('formObject', formObject);
-        execute(formObject)
-        console.log('result', result);
-        }
-    }
-        > Submit Review</Button>
-          {result?.validationErrors?.["_errors"] && <p className="text-lime-500 font-bold transition-all animate-accordion-down">{result.validationErrors["_errors"].join(', ')   }</p>}
+  const formSchema = z.object({
+    name: z
+      .string()
+      .min(1, "Title is required")
+      .max(15, "Title must be less than 15 characters"),
+    review: z
+      .string()
+      .min(1, "Content is required")
+      .max(500, "Content must be less than 500 characters"),
+    star: z
+      .number()
+      .min(1, "Rating is required")
+      .max(5, "Rating must be between 1 and 5"),
+  });
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      review: "",
+      star: 1, // Default rating
+    },
+  });
+
+  useEffect(() => {
+    form.reset();
+  }, [result,form]);
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values);
+    execute(values);
+  }
+
+  return (
+    <div className={className}>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8"
+          ref={formRef}
+        >
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Title</FormLabel>
+                <FormControl>
+                  <Input placeholder="Review title" {...field} />
+                </FormControl>
+                <FormDescription>
+                  Enter a short title for your review.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="review"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Content</FormLabel>
+                <FormControl>
+                  <Input placeholder="Write your review..." {...field} />
+                </FormControl>
+                <FormDescription>
+                  Share your experience or feedback.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit">Submit</Button>
         </form>
-    );
+      </Form>
+    </div>
+  );
 }

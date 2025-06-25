@@ -19,32 +19,25 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html     
-    className="h-full"
-    suppressHydrationWarning lang="en">
-      <head>
+    <html className="h-full" suppressHydrationWarning lang="en">
+      <head></head>
 
-      </head>
-
-      
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
       >
-
-            <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-        {children}
-          </ThemeProvider>
-        
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

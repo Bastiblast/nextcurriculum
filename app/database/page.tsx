@@ -1,53 +1,56 @@
-import { Card, CardDescription, CardTitle } from '@/components/ui/card'
-import { prisma } from '@/lib/prisma'
-import React from 'react'
-import SelectStar from './select-star'
-import { revalidatePath } from 'next/cache'
-import EditTitle from './edit-title'
-import CreateReview from './review-form'
-import { Button } from '@/components/ui/button'
+import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { prisma } from "@/lib/prisma";
+import React from "react";
+import SelectStar from "./select-star";
+import { revalidatePath } from "next/cache";
+import EditTitle from "./edit-title";
+import CreateReview from "./review-form";
+import { Button } from "@/components/ui/button";
+import { X } from "lucide-react";
 
 export default async function page() {
+  const reviews = await prisma.review.findMany();
 
-  const reviews = await prisma.review.findMany()
+  return (
+    <div className="flex">
+      <CreateReview className="m-2 w-1/2 p-4 w-5xl" />
 
-  const changeRating = async (reviewId: string, star: number) => {
-    'use server'
-    console.log('changeRating', reviewId, star)
-    await prisma.review.update({
-      where: { id: reviewId },
-      data: { star }
-    })
+      <div className="overflow-x-scroll">
+        <div>The reviewsse</div>
+        <div className="flex">
+          {reviews.map((review) => (
+            <Card key={review.id} className="m-2 p-4 relative">
+              <CardTitle>
+                <h2>{review.name}</h2>
+              </CardTitle>
+              <CardDescription>
+                <p>{review.review}</p>
+                <p>Rating: {review.star}</p>
+                <SelectStar id={review.id} star={review.star} />
+              </CardDescription>
+              <EditTitle reviewId={review.id} />
 
-    revalidatePath('/database')
-  }
-    return (<>
-    <CreateReview />
-    <div>The reviewsse</div>
-    {reviews.map((review) => (
-      <Card key={review.id}>
-        <CardTitle>
-          <h2>{review.name}</h2>
-        </CardTitle>
-        <CardDescription>
-        <p>{review.review}</p>
-        <p>Rating: {review.star}</p>
-          <SelectStar changeRating={changeRating} id={review.id} star={review.star}/>
-        </CardDescription>
-        <EditTitle reviewId={review.id} />
- 
-          <form action={async () => {
-            'use server'
-            await prisma.review.delete({
-              where: { id: review.id }
-            })
-            revalidatePath('/database')
-          }
-          }>
-            <Button type="submit" className="">Delete</Button>
-          </form>
-      </Card>
-    ))}
-    </>
-  )
+              <form
+                action={async () => {
+                  "use server";
+                  await prisma.review.delete({
+                    where: { id: review.id },
+                  });
+                  revalidatePath("/database");
+                }}
+              >
+                <Button
+                  type="submit"
+                  variant={"outline"}
+                  className="absolute top-0 right-0 m-2"
+                >
+                  <X />
+                </Button>
+              </form>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }

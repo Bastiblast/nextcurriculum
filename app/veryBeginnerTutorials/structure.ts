@@ -25,37 +25,22 @@ const data = {
       ],
       ["CSS", ["page.tsx"]],
       [
-        "Javascript", 
+        "Javascript",
 
-        ["native",
-          
-        ],
+        ["native"],
         ["Librairies", "React", "Next js"],
-      ["ORM", "Prisma"],
-
+        ["ORM", "Prisma"],
       ],
-            [
-        "Typescript", 
-      ],
+      ["Typescript"],
     ],
     [
       "Server Powering",
       ["SSH", "button.tsx", "card.tsx"],
-      ["Linux", 
-        "global", "VIM","ownership"],
+      ["Linux", "global", "VIM", "ownership"],
       ["Database", "PostgreSQL"],
-
     ],
-    ["Tools",
-      ["WSL2"], 
-      ["IDE",
-        "VSCode",
-        "Extensions"
-      ],
-      ["Power Toys"]
-    ],
+    ["Tools", ["WSL2"], ["IDE", "VSCode", "Extensions"], ["Power Toys"]],
   ],
-}
+};
 
-export default data
-
+export default data;

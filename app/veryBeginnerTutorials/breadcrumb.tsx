@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import Link from "next/link"
+import Link from "next/link";
 
 import {
   Breadcrumb,
@@ -10,19 +10,19 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+} from "@/components/ui/breadcrumb";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { usePathname } from "next/navigation"
+} from "@/components/ui/dropdown-menu";
+import { usePathname } from "next/navigation";
 
 export default function VBTBreadcrumb() {
-  const path = usePathname()
-  const [home,...segments] = path.split("/").filter(Boolean)
-  console.log("segments:", segments)
+  const path = usePathname();
+  const [home, ...segments] = path.split("/").filter(Boolean);
+  console.log("segments:", segments);
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -57,5 +57,5 @@ export default function VBTBreadcrumb() {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  )
+  );
 }
