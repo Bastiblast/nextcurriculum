@@ -5,12 +5,10 @@ import Image from "next/image";
 import mainBackground from "../lib/savana.png";
 import { Separator } from "@/components/ui/separator";
 import { ModeToggle } from "@/components/theme-toggle";
-import SignUp from "./sign-up";
 
 export default function Page() {
   return (
     <div className="relative h-full md:flex md:align-middle">
-      <SignUp />
       <Image
         src={mainBackground.src}
         alt="desert background"

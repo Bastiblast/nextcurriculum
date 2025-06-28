@@ -16,10 +16,11 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Card } from "@/components/ui/card"
-import { authClient } from "@/lib/auth-client"
+import { signUp } from "@/lib/auth-client"
 import { useRouter } from "next/navigation"
+import Loading from "@/app/veryBeginnerTutorials/loading"
 
-const formSchema = z.object({
+const SignUpFormSchema = z.object({
     name: z.string().min(2, { message: "Name must be at least 2 characters." }),
     email: z.string().email({ message: "Invalid email address." }),
     password: z.string().min(8, { message: "Password must be at least 8 characters." }),
@@ -27,11 +28,11 @@ const formSchema = z.object({
 })
 
 export default function SignUp() {
-        const router = useRouter()
 
+    const router = useRouter()
 
-    const form = useForm({
-        resolver: zodResolver(formSchema),
+    const form = useForm<z.infer<typeof SignUpFormSchema>>({
+        resolver: zodResolver(SignUpFormSchema),
         defaultValues: {
             name: "",
             email: "",
@@ -40,29 +41,29 @@ export default function SignUp() {
         },
     })
 
-    const onSubmit = async (data: z.infer<typeof formSchema>) => {
-        const { email, password, name, image } = data
-
-        
-        await authClient.signUp.email(
-            {
-                email,
-                password,
-                name,
-                image,
-            },
-            {
-                onRequest: () => {
-                    
-                },
-                onSuccess: () => {
-                },
-                onError: (ctx) => {
-                    alert(ctx.error.message)
-                },
-            }
-        )
-    }
+     async function onSubmit(values: z.infer<typeof SignUpFormSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log("submitting values",values)
+    await signUp.email({
+        email: values.email, // user email address
+        password: values.password, // user password -> min 8 characters by default
+        name: values.name, // user display name
+        image: values.image, // User image URL (optional)
+   }, {
+        onRequest: (ctx) => {
+            <Loading></Loading>
+        },
+        onSuccess: (ctx) => {
+            //redirect to the dashboard or sign in page
+            router.push("/auth/signup");
+        },
+        onError: (ctx) => {
+            // display the error message
+            alert(ctx.error.message);
+        },
+});
+  }
 
     return (
         <Card className="max-w-md mx-auto mt-10 p-6 z-50">
