@@ -1,9 +1,11 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import React from "react";
 import { Header } from "./header";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -19,11 +21,15 @@ export const metadata: Metadata = {
   description: "Welcome to my personnal curriculum",
 };
 
-export default function RootLayout({
+
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html className="h-full" suppressHydrationWarning lang="en">
       <head></head>
@@ -38,7 +44,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header/>
-          {children}
+
+            {children}
+
         </ThemeProvider>
       </body>
     </html>

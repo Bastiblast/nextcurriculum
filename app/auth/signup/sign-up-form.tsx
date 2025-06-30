@@ -19,6 +19,7 @@ import { Card } from "@/components/ui/card"
 import { signUp } from "@/lib/auth-client"
 import { useRouter } from "next/navigation"
 import Loading from "@/app/veryBeginnerTutorials/loading"
+import { useState } from "react"
 
 const SignUpFormSchema = z.object({
     name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -41,6 +42,8 @@ export default function SignUp() {
         },
     })
 
+    const [error,setError] = useState(null)
+
      async function onSubmit(values: z.infer<typeof SignUpFormSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
@@ -52,23 +55,23 @@ export default function SignUp() {
         image: values.image, // User image URL (optional)
    }, {
         onRequest: (ctx) => {
-            <Loading></Loading>
         },
         onSuccess: (ctx) => {
             //redirect to the dashboard or sign in page
-            router.push("/auth/signup");
+            console.log("Auth to ",ctx.data)
+            router.push("/auth");
         },
         onError: (ctx) => {
             // display the error message
-            alert(ctx.error.message);
+            setError(ctx.error.message);
         },
 });
   }
 
     return (
-        <Card className="max-w-md mx-auto mt-10 p-6 z-50">
+        <Card className="mt-10 p-6 z-50">
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form className="space-y-6">
                     <FormField
                         control={form.control}
                         name="name"
@@ -124,10 +127,11 @@ export default function SignUp() {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className="w-full bg-primary text-white py-2 rounded mt-4">
+                    <Button onClick={form.handleSubmit(onSubmit)} className="w-full bg-primary text-white py-2 rounded mt-4">
                         Sign Up
                     </Button>
                 </form>
+            {error && <span className="bg-red-500 p-3 text-center rounded-sm">{error}</span>}    
             </Form>
         </Card>
     )
