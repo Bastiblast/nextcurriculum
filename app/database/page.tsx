@@ -13,13 +13,13 @@ export default async function page() {
 
   return (
     <div className="flex">
-      <CreateReview className="m-2 w-1/2 p-4 w-5xl" />
+      <CreateReview className="m-2 p-4 w-1/3" />
 
       <div className="overflow-x-scroll">
         <div>The reviewsse</div>
         <div className="flex">
           {reviews.map((review) => (
-            <Card key={review.id} className="m-2 p-4 relative">
+            <Card key={review.id} className="relative m-2 p-4">
               <CardTitle>
                 <h2>{review.name}</h2>
               </CardTitle>
@@ -42,7 +42,7 @@ export default async function page() {
                 <Button
                   type="submit"
                   variant={"outline"}
-                  className="absolute top-0 right-0 m-2"
+                  className="top-0 right-0 absolute m-2"
                 >
                   <X />
                 </Button>
