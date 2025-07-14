@@ -5,6 +5,7 @@ import SignOutButton from './signup/signOutButton'
 import SignInForm from './signup/sign-in-form'
 import SignUp from './signup/sign-up-form'
 import { Switch } from './switch'
+import VerificationButton from './verification-button'
 
 export default async function SessionCard() {
     const session = await getSession()
@@ -21,13 +22,15 @@ export default async function SessionCard() {
         </CardContent>
         <CardContent>
             <CardTitle className='text-center'>{session?.user.email}</CardTitle>
-            <CardDescription className='text-center'>{session?.user.emailVerified ? "email vérifié" : "email non vérifié"}</CardDescription>
+            <CardDescription className='text-center'>
+                {session?.user.emailVerified ? "email vérifié" : <VerificationButton/>}
+            </CardDescription>
         </CardContent>
         <SignOutButton/>
     </Card>
 
     const Unconnected = () => 
-    <Card className='flex items-center  md:w-1/2 h-full overflow-y-auto'>
+    <Card className='flex items-center md:w-1/2 h-full overflow-y-auto'>
         <CardTitle>
             Vous êtes déconnecté
         </CardTitle>

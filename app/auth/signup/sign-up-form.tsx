@@ -18,7 +18,6 @@ import { Input } from "@/components/ui/input"
 import { Card } from "@/components/ui/card"
 import { signUp } from "@/lib/auth-client"
 import { useRouter } from "next/navigation"
-import Loading from "@/app/veryBeginnerTutorials/loading"
 import { useState } from "react"
 
 const SignUpFormSchema = z.object({
@@ -69,7 +68,7 @@ export default function SignUp() {
   }
 
     return (
-        <Card className="mt-10 p-6 z-50">
+        <Card className="z-50 mt-10 p-6">
             <Form {...form}>
                 <form className="space-y-6">
                     <FormField
@@ -127,11 +126,11 @@ export default function SignUp() {
                             </FormItem>
                         )}
                     />
-                    <Button onClick={form.handleSubmit(onSubmit)} className="w-full bg-primary text-white py-2 rounded mt-4">
+                    <Button onClick={form.handleSubmit(onSubmit)} className="bg-primary mt-4 py-2 rounded w-full text-white">
                         Sign Up
                     </Button>
                 </form>
-            {error && <span className="bg-red-500 p-3 text-center rounded-sm">{error}</span>}    
+            {error && <span className="bg-red-500 p-3 rounded-sm text-center">{error}</span>}    
             </Form>
         </Card>
     )
