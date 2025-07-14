@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "rsync": "rsync -avr . LearningDebian:~/www/devhub.fr",
+    "rsync": "rsync -avr .next/ LearningDebian:~/www/devhub.fr",
     "prismaStudio": "prisma studio"
   },
   "dependencies": {

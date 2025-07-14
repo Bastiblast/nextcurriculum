@@ -67,7 +67,7 @@ export default function ORMPage() {
             <CodeBlockBody
               value={`DATABASE_URL="your_database_connection_url"`}
             >
-              <CodeBlockContent language="env">
+              <CodeBlockContent language="bash">
                 {`DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"`}
               </CodeBlockContent>
             </CodeBlockBody>
@@ -81,7 +81,7 @@ export default function ORMPage() {
             <CodeBlockBody
               value={`DATABASE_URL="postgresql://user:password@localhost:5432/database"`}
             >
-              <CodeBlockContent language="env">
+              <CodeBlockContent language="bash">
                 {`DATABASE_URL="postgres://user:password@localhost:5432/database"`}
               </CodeBlockContent>
             </CodeBlockBody>

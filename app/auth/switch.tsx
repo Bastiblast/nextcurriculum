@@ -12,7 +12,7 @@ function Switch({
 }: React.ComponentProps<typeof SwitchPrimitive.Root>) {
 
 
-  const [childOne,childTwo] = children
+  const [childOne, childTwo] = React.Children.toArray(children)
   const [checked,setChecked] = React.useState(!true)
 
   React.useEffect(() => {

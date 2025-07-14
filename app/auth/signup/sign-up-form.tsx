@@ -41,7 +41,7 @@ export default function SignUp() {
         },
     })
 
-    const [error,setError] = useState(null)
+    const [error,setError] = useState<null |string>(null)
 
      async function onSubmit(values: z.infer<typeof SignUpFormSchema>) {
     // Do something with the form values.
@@ -53,7 +53,7 @@ export default function SignUp() {
         name: values.name, // user display name
         image: values.image, // User image URL (optional)
    }, {
-        onRequest: (ctx) => {
+        onRequest: () => {
         },
         onSuccess: (ctx) => {
             //redirect to the dashboard or sign in page

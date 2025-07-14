@@ -41,7 +41,7 @@ export default function SignInForm() {
             email: values.email,
             password: values.password,
         }, {
-            onRequest: (ctx) => {
+            onRequest: () => {
                 console.log("request signIn")
             },
             onSuccess: (ctx) => {
@@ -55,7 +55,7 @@ export default function SignInForm() {
     }
 
     return (
-        <Card className="mt-10 p-6 z-50 w-full">
+        <Card className="z-50 mt-10 p-6 w-full">
             <Form {...form}>
                 <form className="space-y-6">
                     <FormField
@@ -87,7 +87,7 @@ export default function SignInForm() {
                             </FormItem>
                         )}
                     />
-                    <Button onClick={form.handleSubmit(onSubmit)} className="w-full bg-primary text-white py-2 rounded mt-4">
+                    <Button onClick={form.handleSubmit(onSubmit)} className="bg-primary mt-4 py-2 rounded w-full text-white">
                         Sign In
                     </Button>
                 </form>
