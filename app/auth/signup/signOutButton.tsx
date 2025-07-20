@@ -12,7 +12,7 @@ export default function SignOutButton() {
     const signOut = async () => await authClient.signOut({
   fetchOptions: {
     onSuccess: () => {
-      router.push("/auth/signup"); // redirect to login page
+      router.push("/auth"); // redirect to login page
     },
   },
 });;

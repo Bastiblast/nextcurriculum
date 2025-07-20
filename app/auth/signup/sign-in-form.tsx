@@ -19,6 +19,7 @@ import {Form,
     FormLabel,
     FormMessage,
 } from "@/components/ui/form"
+import Link from "next/link"
 
 const SignInFormSchema = z.object({
     email: z.string().email({ message: "Invalid email address." }),
@@ -83,6 +84,9 @@ export default function SignInForm() {
                                 <FormDescription>
                                     Must be at least 8 characters.
                                 </FormDescription>
+                                <Link  href="/auth/forget-password">
+                                Forget password ?
+                                </Link >
                                 <FormMessage />
                             </FormItem>
                         )}
