@@ -5,7 +5,7 @@ export default async function AuthPage(
     props: {searchParams: Promise<Record<string,string>>}
 ){
     const searchParams = await props.searchParams;
-    const email = searchParams.email;
+    const email = decodeURI(searchParams.email);
     return (
         <Card>
             <CardHeader>

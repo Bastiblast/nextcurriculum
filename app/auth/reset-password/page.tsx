@@ -16,7 +16,7 @@ export default function ForgetPasswordPage() {
     const Router = useRouter()
 
     const searchParams = useSearchParams();
-    const {token} = searchParams
+    const token = searchParams.get('token');
     
     async function handleSubmit(formData: FormData) {
         const password = formData.get("password") as string
@@ -40,7 +40,7 @@ export default function ForgetPasswordPage() {
                 }
             })
         } catch (err) {
-            toast.error('Something went wrong.');
+            toast.error(String(err));
         } finally {
             setLoading(false);
         }
@@ -50,22 +50,23 @@ export default function ForgetPasswordPage() {
         <div className="flex min-h-screen items-center justify-center bg-muted">
             <Card className="w-full max-w-md">
                 <CardHeader>
-                    <CardTitle>Forgot your password?</CardTitle>
+                    <CardTitle>You got a second chance</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <form action={handleSubmit} className="space-y-4">
                         <div>
-                            <Label htmlFor="email">Email address</Label>
+                            <Label htmlFor="email">New password</Label>
                             <Input
-                                id="email"
-                                type="email"
-                                autoComplete="email"
+                                id="password"
+                                name="password"
+                                type="password"
+                                autoComplete="password"
                                 required
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
                                 disabled={loading}
                                 placeholder="you@example.com"
-                            />
+                                />
                         </div>
                         <Button type="submit" className="w-full" disabled={loading || !email}>
                             {loading ? 'Sending...' : 'Send reset link'}

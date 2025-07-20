@@ -27,7 +27,7 @@ export default function ForgetPasswordPage() {
                 },
             {
                 onSuccess: () => {
-                    Router.push(`/auth/verifry?email=${email}`)
+                    Router.push(`/auth/verify?email=${email}`)
                     Router.refresh()
                 },
                 onError: (error) => {
@@ -35,7 +35,7 @@ export default function ForgetPasswordPage() {
                 }
             })
         } catch (err) {
-            toast.error('Something went wrong.');
+            toast.error(String(err));
         } finally {
             setLoading(false);
         }
