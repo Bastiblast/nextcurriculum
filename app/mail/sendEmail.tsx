@@ -1,6 +1,5 @@
 'use server'
 
-
 const OptionsType = {
         to: 'somebody@somewhere.ok',
         subject: "Verify your email address",
@@ -24,7 +23,8 @@ pass: process.env.PASSWORD,
 },
     tls: {
         rejectUnauthorized: false
-    }
+    },
+    cacheDir: false, // disable disk caching
 });
 
 console.log("send mail with transporter",transporter)

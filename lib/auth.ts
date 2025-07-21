@@ -8,7 +8,7 @@ export const auth = betterAuth({
     database: prismaAdapter(prisma, {
         provider: "postgresql", // or "mysql", "postgresql", ...etc
     }),
-     trustedOrigins: ['http://localhost:5432','https://devhub.lionside.fr'],
+     trustedOrigins: ['http://localhost:5432','https://devhub.lionside.fr',"http://localhost:3000"],
         //...other options
       //     plugins: [nextCookies()], 
     emailAndPassword: {  
