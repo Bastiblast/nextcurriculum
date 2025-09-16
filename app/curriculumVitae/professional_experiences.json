@@ -1,0 +1,137 @@
+{
+  "profile": {
+    "currentEmployer": "Amazon",
+    "currentRole": "Team leader",
+    "teamLeaderSince": 2019
+  },
+  "experiences": [
+    {
+      "id": "expedition-2019",
+      "area": "Expédition des commandes",
+      "start": "2019",
+      "end": false,
+      "teamSize": "10-30",
+      "summary": "Gestion du flux de camions intérieur et opérations de chargement.",
+      "details": [
+        "Suivi du flux de camion entrant et sortant",
+        "Application des procédures de prise en charge",
+        "Assurer la sécurité sur la zone",
+        "Détermination des priorités et supervision des opérations de chargement"
+      ]
+    },
+        {
+      "id": "tom-2020",
+      "area": "Planification transport",
+      "start": "2019",
+      "end": false,
+      "teamSize": "10-30",
+      "summary": "Gestion du flux extérieur des camions et des opérations TDR (Truck depart and realease)",
+      "details": [
+        "Communication du plan au équipe et disponibilité permanente pour leurs questions.",
+        "Suivi de l'arriver des camions et communication transporteur pour signaler les retards.",
+        "Gestion des anomalies sur les camions entrants, mise en place des procédures exeptionnels ou refus des camions.",
+        "Assurer la sécurité sur la zone à l'aide d'audit quotidien (matériel, espace et camion/remorque).",
+        "Supervision des opérations de déchargement "
+      ]
+    },
+    {
+      "id": "emballage-2021",
+      "area": "Emballage et injection de colis",
+      "start": "2021",
+      "end": false,
+      "teamSize": "10-30",
+      "summary": "Organisation et optimisation des flux d'emballage.",
+      "details": [
+        "Calcul de capacité",
+        "Organisation et optimisation des flux",
+        "Suivi des performances et des anomalies",
+        "Accompagnement et coaching",
+        "Animation de projet et amélioration continue"
+      ]
+    },
+    {
+      "id": "prelevement-2023-operations",
+      "area": "Prélèvement et mise en rayon",
+      "start": "2023",
+      "end": false,
+      "teamSize": "60-100",
+      "summary": "Supervision des opérations de prélèvement à grande échelle.",
+      "details": [
+        "Gestion d'événements aléatoires et forte fréquence de transactions",
+        "Accueil et suivi des intérimaires",
+        "Optimisation de l'utilisation de l'espace de stockage",
+        "Suivi des performances et des anomalies",
+        "Accompagnement et coaching",
+        "Conduite de projets et améliorations continues"
+      ]
+    },
+    {
+      "id": "controle-qualite-2024",
+      "area": "Contrôle inventaire et qualité",
+      "start": "2024",
+      "end": false,
+      "teamSize": "10-20",
+      "summary": "Gestion d'équipes sur postes complexes pour maintien de la qualité.",
+      "details": [
+        "Accompagnement lors de fusions de service",
+        "Correction des anomalies produit en lien avec équipes internationales",
+        "Application de stratégies de correction de stock",
+        "Analyse des déviations de procédure",
+        "Assistance inter-services pour maintien de la qualité globale"
+      ]
+    }
+  ],
+  "projets":[
+    {
+      "id": "projet-dashboard-2023",
+      "area": "Tableau de bord de suivi",
+      "period": "2023",
+      "summary": "Tableau de bord de suivi des prélèvements de commande pour améliorer le suivi opérationnel.",
+      "details": [
+        "Tracking de l'activité",
+        "Réduction de l'utilisation de sites annexes",
+        "Regroupement d'informations multi-sources",
+        "Affichage de l'équivalent de 3 pages d'information en une",
+        "Ajout d'informations récupérées depuis des API tierces",
+        "Meilleure maîtrise des délais par les responsables de zone",
+        "Amélioration de la réactivité et disponibilité terrain"
+      ]
+    },
+    {
+      "id": "projet-prelevement-2023-ongoing",
+      "area": "Prélèvement et mise en rayon (projet)",
+      "period": "depuis 2023",
+      "summary": "Projets d'amélioration pour opérations de prélèvement et mise en rayon.",
+      "details": [
+        "Focus sur flux, performance et gestion des effectifs",
+        "Actions d'accompagnement, coaching et optimisation d'espace"
+      ]
+    },
+    {
+      "id": "projet-affichage-2022",
+      "area": "Affichage des chariots terminés",
+      "period": "2022",
+      "summary": "Affichage des chariots terminés sur moniteur et routage FIFO.",
+      "technicalNotes": [
+        "Adaptation d'un script Tampermonkey",
+        "Affichage sur un moniteur dédié",
+        "Permet d'aiguiller les chariots sur les FIFOs",
+        "Suppression d'un poste sans valeur ajoutée"
+      ]
+    },
+    {
+      "id": "projet-controle-inventaire-2024",
+      "area": "Contrôle inventaire et qualité",
+      "period": "depuis 2024",
+      "summary": "Contrôle inventaire et qualité sur postes complexes, amélioration de la qualité globale.",
+      "details": [
+        "équipe de 10 à 20 personnes",
+        "Accompagnement sur la fusion de service",
+        "Correction des anomalies de produit en lien avec les équipes internationales",
+        "Application des stratégies de correction de stock",
+        "Analyse des déviations de procédure",
+        "Assistance aux autres services pour le maintien de la qualité globale"
+      ]
+    }
+  ]
+}
